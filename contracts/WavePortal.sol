@@ -29,8 +29,8 @@ contract WavePortal {
 
     function wave(string memory _message) public {
         require(
-            lastWave[msg.sender] + 15 minutes < block.timestamp,
-            "Wait 15 minutes"
+            lastWave[msg.sender] + 30 seconds < block.timestamp,
+            "Wait 30 seconds before waving again!"
         );
 
         lastWave[msg.sender] = block.timestamp;
@@ -43,7 +43,7 @@ contract WavePortal {
 
         console.log("Random Number generated: ", seed);
 
-        if (seed <= 50) {
+        if (seed <= 10) {
             console.log("%s won!", msg.sender);
 
             uint256 priceAmount = 0.0001 ether;
